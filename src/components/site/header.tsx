@@ -52,7 +52,7 @@ export function SiteHeader() {
                 aria-current={on ? "page" : undefined}
                 className={cn(
                   "border-b py-1.5 text-sm font-medium",
-                  // Insights and Contact only fit in the bar on wide landscape screens.
+                  // Insights only fits in the bar on wide landscape screens.
                   OVERFLOW_NAV_HREFS.includes(n.href) && "hidden navfull:inline",
                   on ? "border-rust text-rust hover:text-rust" : "border-transparent text-ink hover:text-rust",
                 )}
@@ -161,12 +161,12 @@ function Drawer({ open, onOpenChange, pathname }: { open: boolean; onOpenChange:
           {/* Header and button stay put; the middle scrolls on its own and is centred between them whenever it fits. */}
           <div className="-mx-1 flex min-h-0 flex-1 flex-col overflow-y-auto px-1">
             <div className="my-auto flex flex-col gap-7 short:gap-5">
-              {/* Every link when the bar has none; just the overflow links on tablet portrait / phone landscape; none when the bar holds all 8. */}
+              {/* Every link when the bar has none; just Insights on tablet portrait / phone landscape; none when the bar holds all 8. */}
               {navList(NAV, "flex navsplit:hidden navfull:hidden")}
               {navList(OVERFLOW_NAV, "hidden navsplit:flex navfull:hidden")}
 
               <div className="flex flex-col">
-                <span className="pb-1.5 text-[11px] font-semibold tracking-[.16em] text-copper uppercase">Get in touch</span>
+                <span className="pb-1.5 text-center text-[11px] font-semibold tracking-[.16em] text-copper uppercase">Get in touch</span>
                 <a href={waLink()} target="_blank" rel="noopener noreferrer" className={contactRow}>
                   <span className={contactIcon}>
                     <WhatsAppIcon />

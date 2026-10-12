@@ -14,7 +14,7 @@ export const NAV = [
 ] as const;
 
 /** Links that move from the bar into the drawer on tablet portrait and phone landscape, where the bar is short of room. */
-export const OVERFLOW_NAV_HREFS: readonly string[] = ["/insights", "/contact"];
+export const OVERFLOW_NAV_HREFS: readonly string[] = ["/insights"];
 export const OVERFLOW_NAV = NAV.filter((n) => OVERFLOW_NAV_HREFS.includes(n.href));
 
 export const SOCIALS = [

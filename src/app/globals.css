@@ -65,13 +65,13 @@
 /*
  * Header nav modes.
  *   navfull  landscape screens ≥ 960px (desktop, tablet landscape): all 8 links in the bar
- *   navsplit tablet portrait and phone landscape (≥ 680px): 6 links in the bar, Insights + Contact in the drawer
+ *   navsplit tablet portrait and phone landscape (≥ 720px): 7 links in the bar, Insights in the drawer
  *   neither  phone portrait and narrow windows: burger only, every link in the drawer
  */
 @custom-variant navfull (@media (min-width: 960px) and (orientation: landscape));
 @custom-variant navsplit {
-  @media (min-width: 680px) and (orientation: portrait) { @slot; }
-  @media (min-width: 680px) and (max-width: 959.98px) and (orientation: landscape) and (pointer: coarse) { @slot; }
+  @media (min-width: 720px) and (orientation: portrait) { @slot; }
+  @media (min-width: 720px) and (max-width: 959.98px) and (orientation: landscape) and (pointer: coarse) { @slot; }
 }
 /* Short screens (most phones): the drawer menu tightens so it fits between its header and button. */
 @custom-variant short (@media (max-height: 1000px));
