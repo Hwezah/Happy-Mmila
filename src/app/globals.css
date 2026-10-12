@@ -247,8 +247,8 @@
 @media (max-width: 759.98px) and (orientation: portrait), (max-width: 759.98px) and (not (pointer: coarse)) {
   .hero { min-height: calc(100svh - var(--bh, 0px)); }
   .hero-ctas { display: none; }
-  /* Sits low over the photo while keeping ~55px between the headline and the raised dock buttons. */
-  .hero-content { padding-bottom: calc(180px + env(safe-area-inset-bottom)); }
+  /* Sits low over the photo: tighter stack, ~40px between the headline and the raised dock buttons. */
+  .hero-content { gap: 14px; padding-bottom: calc(146px + env(safe-area-inset-bottom)); }
 }
 @media (max-width: 759.98px) and (min-width: 600px) and (orientation: portrait) {
   .hero-content { padding-bottom: calc(max(214px, 22svh) + env(safe-area-inset-bottom)); }
@@ -289,7 +289,7 @@
 @media (max-width: 759.98px) and (orientation: portrait), (max-width: 759.98px) and (not (pointer: coarse)) {
   .dock[data-over="true"] {
     transform: none;
-    padding-bottom: calc(72px + env(safe-area-inset-bottom));
+    padding-bottom: calc(56px + env(safe-area-inset-bottom));
   }
 }
 @media (max-width: 759.98px) and (min-width: 600px) and (orientation: portrait) {
