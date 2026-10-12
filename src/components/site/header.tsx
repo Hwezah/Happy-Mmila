@@ -98,7 +98,7 @@ function Wordmark() {
   );
 }
 
-const contactRow = "flex items-center gap-3.5 border-b border-cream/12 py-3.5 text-cream short:py-2 hover:text-copper";
+const contactRow = "flex items-center gap-3.5 py-3.5 text-cream short:py-2 hover:text-copper";
 const contactIcon = "flex size-9 flex-none items-center justify-center rounded-full bg-cream/8 text-copper short:size-8";
 const contactLabel = "text-[11px] font-semibold tracking-[.16em] text-faint uppercase";
 
