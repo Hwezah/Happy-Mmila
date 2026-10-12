@@ -8,6 +8,7 @@ import { PlayIcon } from "@/components/ui/icons";
 import { ArrowCircle } from "@/components/site/ui";
 import { useCheckout } from "@/context/checkout-context";
 import { FEATURED_TALK, MASTERCLASS_EVENT, POST_FILTERS, POSTS, type Post } from "@/lib/content";
+import { focusPosition } from "@/lib/images";
 import { cn } from "@/lib/utils";
 
 type Filter = (typeof POST_FILTERS)[number]["key"];
@@ -62,7 +63,14 @@ function FeaturedTalk() {
         className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,420px),1fr))] overflow-hidden rounded-xs bg-ink text-left text-cream hover:text-cream"
       >
         <div className="relative aspect-[16/11] bg-[#43302A]">
-          <Image src={FEATURED_TALK.img} alt="Happy speaking on the TEDx stage" fill sizes="(max-width: 880px) 100vw, 590px" className={cn("object-cover", FEATURED_TALK.imgFocus === "top" && "object-top")} />
+          <Image
+            src={FEATURED_TALK.img}
+            alt="Happy speaking on the TEDx stage"
+            fill
+            sizes="(max-width: 880px) 100vw, 590px"
+            className="object-cover"
+            style={{ objectPosition: focusPosition(FEATURED_TALK.imgFocus) }}
+          />
           <span className="absolute bottom-5 left-5 flex size-16 items-center justify-center rounded-full bg-cream text-ink">
             <PlayIcon />
           </span>
@@ -95,7 +103,8 @@ function PostCard({ post }: { post: Post }) {
           alt=""
           fill
           sizes="(max-width: 560px) 100vw, (max-width: 960px) 50vw, 380px"
-          className={cn("object-cover", post.imgFocus === "top" && "object-top")}
+          className="object-cover"
+          style={{ objectPosition: focusPosition(post.imgFocus) }}
         />
         {post.video && (
           <span className="absolute bottom-4 left-4 flex size-12 items-center justify-center rounded-full bg-cream text-ink">

@@ -19,3 +19,14 @@ function localPath(key: ImageKey) {
 export const IMG = Object.fromEntries(
   (Object.keys(REMOTE_IMAGES) as ImageKey[]).map((k) => [k, USE_LOCAL_IMAGES ? localPath(k) : REMOTE_IMAGES[k]]),
 ) as Record<ImageKey, string>;
+
+/**
+ * Where a cropped photo anchors vertically: "top", "center" (default) or a percentage such as "12%"
+ * (0% = top edge). Use "top" or a small percentage on portraits so heads stay in frame.
+ */
+export type ImageFocus = "top" | "center" | `${number}%`;
+
+/** CSS object-position for an ImageFocus. */
+export function focusPosition(focus: ImageFocus = "center") {
+  return `50% ${focus === "top" ? "0%" : focus === "center" ? "50%" : focus}`;
+}

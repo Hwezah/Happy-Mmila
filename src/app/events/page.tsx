@@ -7,6 +7,7 @@ import { CalendarIcon, ClockIcon, PinIcon } from "@/components/ui/icons";
 import { Price } from "@/components/site/price";
 import { TicketButton } from "@/components/site/ticket-link";
 import { EVENTS } from "@/lib/content";
+import { focusPosition } from "@/lib/images";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -38,7 +39,8 @@ export default function EventsPage() {
                   alt={e.title}
                   fill
                   sizes="(max-width: 560px) 100vw, (max-width: 960px) 50vw, 380px"
-                  className={cn("object-cover", e.imgFocus === "top" && "object-top")}
+                  className="object-cover"
+          style={{ objectPosition: focusPosition(e.imgFocus) }}
                 />
                 <div className="absolute top-4 left-4 flex min-w-16 flex-col items-center rounded-xs bg-cream px-3.5 pt-2.5 pb-2">
                   <span className="text-[11px] font-semibold tracking-[.16em] text-rust uppercase">{e.mon}</span>

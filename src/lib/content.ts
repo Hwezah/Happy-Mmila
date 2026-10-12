@@ -1,4 +1,4 @@
-import { IMG } from "@/lib/images";
+import { IMG, type ImageFocus } from "@/lib/images";
 
 /* Single source of truth for the site's copy and data. Prices are in USD; the UI converts. */
 
@@ -287,9 +287,6 @@ export const MASTERCLASS_MOSAIC = [
   { src: IMG.mcGroup, alt: "Final cohort group photo", span: "col-span-2" },
 ];
 
-/** Where a cropped photo anchors; "top" keeps heads in frame on portraits. Defaults to centre. */
-export type ImageFocus = "top" | "center";
-
 export type Tier = { name: string; desc: string; usd: number };
 export type EventItem = {
   slug: string;
@@ -439,7 +436,7 @@ export const ARTICLES: Article[] = [
     title: "From one unit to nine: what I'd do differently",
     meta: "4 min read",
     img: IMG.portraitHero,
-    imgFocus: "top",
+    imgFocus: "12%",
     blurb: "Lessons from scaling a hosting business — the wins, and the mistakes worth avoiding.",
     lead: "I started with one underfunded unit and a lot of conviction. Growing to nine taught me more than any course could.",
     sections: [

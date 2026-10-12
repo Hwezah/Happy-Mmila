@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { buttonVariants } from "@/components/ui/button";
 import { ArrowCircle } from "@/components/site/ui";
 import { ARTICLES } from "@/lib/content";
+import { focusPosition } from "@/lib/images";
 import { cn } from "@/lib/utils";
 
 export const dynamicParams = false;
@@ -45,7 +46,8 @@ export default async function ArticlePage({ params }: PageProps<"/insights/[slug
         <Image src={article.img} alt="" fill
           sizes="(max-width: 820px) 100vw, 820px"
           preload
-          className={cn("object-cover", article.imgFocus === "top" && "object-top")}
+          className="object-cover"
+          style={{ objectPosition: focusPosition(article.imgFocus) }}
         />
       </div>
       <p className="m-0 font-display text-[clamp(20px,2vw,24px)] leading-normal">{article.lead}</p>
