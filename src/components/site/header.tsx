@@ -111,7 +111,7 @@ function Drawer({ open, onOpenChange, pathname }: { open: boolean; onOpenChange:
 
   const navList = (items: readonly { href: string; label: string }[], className: string) => (
     <nav aria-label="Menu" className={cn("flex-col", className)}>
-      {items.map((n, i) => {
+      {items.map((n) => {
         const on = isActive(n.href, pathname);
         return (
           <Link
@@ -120,12 +120,11 @@ function Drawer({ open, onOpenChange, pathname }: { open: boolean; onOpenChange:
             onClick={close}
             aria-current={on ? "page" : undefined}
             className={cn(
-              "flex items-baseline justify-between border-b border-cream/14 py-3.5 font-display text-[clamp(26px,6vw,32px)] leading-[1.15] short:py-1.5 short:text-[clamp(22px,5.6vw,28px)]",
+              "block py-3.5 font-display text-[clamp(26px,6vw,32px)] leading-[1.15] short:py-1.5 short:text-[clamp(22px,5.6vw,28px)]",
               on ? "text-copper hover:text-copper" : "text-cream hover:text-copper",
             )}
           >
-            <span>{n.label}</span>
-            <span className="font-sans text-xs tracking-[.16em] text-faint">0{i + 1}</span>
+            {n.label}
           </Link>
         );
       })}
