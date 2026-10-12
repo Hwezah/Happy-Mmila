@@ -287,6 +287,9 @@ export const MASTERCLASS_MOSAIC = [
   { src: IMG.mcGroup, alt: "Final cohort group photo", span: "col-span-2" },
 ];
 
+/** Where a cropped photo anchors; "top" keeps heads in frame on portraits. Defaults to centre. */
+export type ImageFocus = "top" | "center";
+
 export type Tier = { name: string; desc: string; usd: number };
 export type EventItem = {
   slug: string;
@@ -299,6 +302,7 @@ export type EventItem = {
   time: string;
   venue: string;
   img: string;
+  imgFocus?: ImageFocus;
   tiers: Tier[];
 };
 
@@ -314,6 +318,7 @@ export const EVENTS: EventItem[] = [
     time: "9:00 AM – 5:00 PM",
     venue: "Kampala · venue shared on booking",
     img: IMG.mcLeading,
+    imgFocus: "top",
     tiers: [
       { name: "Standard", desc: "Full-day access, materials, lunch & certificate", usd: 120 },
       { name: "VIP", desc: "Front-row seat plus a 15-min 1:1 listing review with Happy", usd: 200 },
@@ -331,6 +336,7 @@ export const EVENTS: EventItem[] = [
     time: "10:00 AM – 1:00 PM",
     venue: "Kampala & livestream",
     img: IMG.mcPanel,
+    imgFocus: "top",
     tiers: [
       { name: "In person", desc: "Seat, workbook and refreshments", usd: 40 },
       { name: "Livestream", desc: "Join live online — recording included", usd: 25 },
@@ -347,15 +353,13 @@ export const EVENTS: EventItem[] = [
     time: "6:00 PM – 9:00 PM",
     venue: "Kampala · venue shared on booking",
     img: IMG.mcNetworking,
+    imgFocus: "top",
     tiers: [{ name: "Entry", desc: "Welcome drink, talks and networking", usd: 30 }],
   },
 ];
 
 /** Index of the next masterclass in EVENTS — the announcement bar and "Get tickets" CTAs open this one. */
 export const MASTERCLASS_EVENT = 0;
-
-/** Where a cropped photo anchors; "top" keeps heads in frame on portraits. Defaults to centre. */
-export type ImageFocus = "top" | "center";
 
 export type Article = {
   slug: string;

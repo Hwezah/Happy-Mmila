@@ -33,7 +33,13 @@ export default function EventsPage() {
           {EVENTS.map((e, i) => (
             <article key={e.slug} className="flex flex-col overflow-hidden rounded-xs border border-ink/14 bg-paper text-left">
               <div className="relative aspect-[16/10] bg-sand-2">
-                <Image src={e.img} alt={e.title} fill sizes="(max-width: 560px) 100vw, (max-width: 960px) 50vw, 380px" className="object-cover" />
+                <Image
+                  src={e.img}
+                  alt={e.title}
+                  fill
+                  sizes="(max-width: 560px) 100vw, (max-width: 960px) 50vw, 380px"
+                  className={cn("object-cover", e.imgFocus === "top" && "object-top")}
+                />
                 <div className="absolute top-4 left-4 flex min-w-16 flex-col items-center rounded-xs bg-cream px-3.5 pt-2.5 pb-2">
                   <span className="text-[11px] font-semibold tracking-[.16em] text-rust uppercase">{e.mon}</span>
                   <span className="font-display text-[30px] leading-[1.05]">{e.day}</span>
