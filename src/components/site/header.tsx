@@ -76,7 +76,7 @@ export function SiteHeader() {
 
 function Wordmark() {
   return (
-    <Link href="/" className="inline-flex flex-col items-stretch gap-[7px] text-ink hover:text-ink">
+    <Link href="/" className="inline-flex flex-col items-stretch gap-[3px] text-ink hover:text-ink">
       <span className="font-display text-2xl leading-none font-medium tracking-[-.01em]">
         Happy <em className="font-normal">Mmila</em>
       </span>
