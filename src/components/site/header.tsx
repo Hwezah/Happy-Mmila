@@ -6,7 +6,7 @@ import { Dialog, VisuallyHidden } from "radix-ui";
 import { useEffect, useRef, useState } from "react";
 
 import { buttonVariants } from "@/components/ui/button";
-import { CloseIcon, MailIcon, PhoneIcon, PinIcon, WhatsAppIcon } from "@/components/ui/icons";
+import { ArrowUpRightIcon, CloseIcon, MailIcon, PhoneIcon, PinIcon, WhatsAppIcon } from "@/components/ui/icons";
 import { SocialLinks } from "@/components/site/ui";
 import { NAV, OVERFLOW_NAV, OVERFLOW_NAV_HREFS } from "@/lib/content";
 import { cn } from "@/lib/utils";
@@ -109,7 +109,7 @@ const contactLabel = "text-[11px] font-semibold tracking-[.16em] text-faint uppe
 function Drawer({ open, onOpenChange, pathname }: { open: boolean; onOpenChange: (o: boolean) => void; pathname: string }) {
   const close = () => onOpenChange(false);
 
-  const navList = (items: readonly { href: string; label: string }[], className: string) => (
+  const navList = (items: readonly { href: string; label: string }[], className: string, withArrow = false) => (
     <nav aria-label="Menu" className={cn("flex-col", className)}>
       {items.map((n) => {
         const on = isActive(n.href, pathname);
@@ -120,11 +120,14 @@ function Drawer({ open, onOpenChange, pathname }: { open: boolean; onOpenChange:
             onClick={close}
             aria-current={on ? "page" : undefined}
             className={cn(
-              "block py-3.5 font-display text-[clamp(26px,6vw,32px)] leading-[1.15] short:py-1.5 short:text-[clamp(22px,5.6vw,28px)]",
+              "group/link flex items-center justify-between gap-4 py-3.5 font-display text-[clamp(26px,6vw,32px)] leading-[1.15] short:py-1.5 short:text-[clamp(22px,5.6vw,28px)]",
               on ? "text-copper hover:text-copper" : "text-cream hover:text-copper",
             )}
           >
             {n.label}
+            {withArrow && (
+              <ArrowUpRightIcon className="size-[clamp(28px,6vw,34px)] flex-none text-copper transition-transform duration-300 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 motion-reduce:transition-none" />
+            )}
           </Link>
         );
       })}
@@ -163,7 +166,7 @@ function Drawer({ open, onOpenChange, pathname }: { open: boolean; onOpenChange:
             <div className="my-auto flex flex-col gap-7 short:gap-5">
               {/* Every link when the bar has none; just Insights on tablet portrait / phone landscape; none when the bar holds all 8. */}
               {navList(NAV, "flex navsplit:hidden navfull:hidden")}
-              {navList(OVERFLOW_NAV, "hidden navsplit:flex navfull:hidden")}
+              {navList(OVERFLOW_NAV, "hidden navsplit:flex navfull:hidden", true)}
 
               <div className="flex flex-col">
                 <span className="pb-1.5 text-center text-[11px] font-semibold tracking-[.16em] text-copper uppercase">Get in touch</span>

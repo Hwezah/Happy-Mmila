@@ -12,6 +12,15 @@ export function ArrowIcon(props: P) {
   );
 }
 
+/** Large thin up-right arrow for a lone, featured drawer link. */
+export function ArrowUpRightIcon(props: P) {
+  return (
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden {...props}>
+      <path d="M5 27L27 5M9 5h18v18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export function CheckIcon({ strokeWidth = 1.6, ...props }: P) {
   return (
     <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden {...props}>
