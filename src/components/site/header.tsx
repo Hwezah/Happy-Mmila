@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import { buttonVariants } from "@/components/ui/button";
 import { CloseIcon, MailIcon, PhoneIcon, PinIcon, WhatsAppIcon } from "@/components/ui/icons";
 import { SocialLinks } from "@/components/site/ui";
-import { BAR_NAV, DRAWER_DESKTOP_NAV, NAV } from "@/lib/content";
+import { NAV, OVERFLOW_NAV, OVERFLOW_NAV_HREFS } from "@/lib/content";
 import { cn } from "@/lib/utils";
 import { EMAIL, PHONE_DISPLAY, PHONE_TEL, waLink } from "@/lib/whatsapp";
 
@@ -42,8 +42,8 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-[1560px] flex-wrap items-center justify-between gap-6 px-[clamp(14px,3vw,48px)] py-[clamp(10px,2vw,18px)]">
         <Wordmark />
 
-        <nav aria-label="Main" className="hidden flex-nowrap items-center gap-[clamp(12px,1.5vw,30px)] whitespace-nowrap xl:flex">
-          {BAR_NAV.map((n) => {
+        <nav aria-label="Main" className="hidden flex-nowrap items-center gap-[clamp(12px,1.5vw,30px)] whitespace-nowrap navsplit:flex navfull:flex">
+          {NAV.map((n) => {
             const on = isActive(n.href, pathname);
             return (
               <Link
@@ -52,6 +52,8 @@ export function SiteHeader() {
                 aria-current={on ? "page" : undefined}
                 className={cn(
                   "border-b py-1.5 text-sm font-medium",
+                  // Insights and Contact only fit in the bar on wide landscape screens.
+                  OVERFLOW_NAV_HREFS.includes(n.href) && "hidden navfull:inline",
                   on ? "border-rust text-rust hover:text-rust" : "border-transparent text-ink hover:text-rust",
                 )}
               >
@@ -101,8 +103,8 @@ const contactIcon = "flex size-9 flex-none items-center justify-center rounded-f
 const contactLabel = "text-[11px] font-semibold tracking-[.16em] text-faint uppercase";
 
 /**
- * Full-height dark drawer. Under 960px it lists every page; on desktop only Insights and Contact
- * (the rest are in the bar). Clicking the backdrop closes it.
+ * Full-height dark drawer. It lists whichever pages the bar can't fit (see the navfull / navsplit
+ * variants in globals.css) plus contact details. Clicking the backdrop closes it.
  */
 function Drawer({ open, onOpenChange, pathname }: { open: boolean; onOpenChange: (o: boolean) => void; pathname: string }) {
   const close = () => onOpenChange(false);
@@ -160,8 +162,9 @@ function Drawer({ open, onOpenChange, pathname }: { open: boolean; onOpenChange:
           {/* Header and button stay put; the middle scrolls on its own and is centred between them whenever it fits. */}
           <div className="-mx-1 flex min-h-0 flex-1 flex-col overflow-y-auto px-1">
             <div className="my-auto flex flex-col gap-7 short:gap-5">
-              {navList(NAV, "flex xl:hidden")}
-              {navList(DRAWER_DESKTOP_NAV, "hidden xl:flex")}
+              {/* Every link when the bar has none; just the overflow links on tablet portrait / phone landscape; none when the bar holds all 8. */}
+              {navList(NAV, "flex navsplit:hidden navfull:hidden")}
+              {navList(OVERFLOW_NAV, "hidden navsplit:flex navfull:hidden")}
 
               <div className="flex flex-col">
                 <span className="pb-1.5 text-[11px] font-semibold tracking-[.16em] text-copper uppercase">Get in touch</span>

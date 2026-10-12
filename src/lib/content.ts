@@ -13,9 +13,9 @@ export const NAV = [
   { href: "/contact", label: "Contact" },
 ] as const;
 
-/** In the header bar on desktop; the rest live in the drawer. */
-export const BAR_NAV = NAV.filter((n) => n.href !== "/insights" && n.href !== "/contact");
-export const DRAWER_DESKTOP_NAV = NAV.filter((n) => n.href === "/insights" || n.href === "/contact");
+/** Links that move from the bar into the drawer on tablet portrait and phone landscape, where the bar is short of room. */
+export const OVERFLOW_NAV_HREFS: readonly string[] = ["/insights", "/contact"];
+export const OVERFLOW_NAV = NAV.filter((n) => OVERFLOW_NAV_HREFS.includes(n.href));
 
 export const SOCIALS = [
   { key: "instagram", label: "Instagram", href: "https://www.instagram.com/mmila_happy/" },
