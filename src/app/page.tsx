@@ -30,6 +30,7 @@ export default function HomePage() {
             <Link
               key={j.num}
               href="/pricing"
+              data-animate="card"
               className="flex min-h-[clamp(260px,40vw,340px)] flex-col gap-[18px] bg-cream px-[clamp(24px,6vw,36px)] py-[clamp(28px,7vw,40px)] text-left text-ink transition-colors hover:bg-sand hover:text-ink"
             >
               <span className="font-display text-[15px] text-rust">{j.num}</span>
@@ -46,7 +47,7 @@ export default function HomePage() {
       {/* Philosophy */}
       <section className="bg-sand">
         <div className="wrap grid grid-cols-[repeat(auto-fit,minmax(min(100%,420px),1fr))] items-center gap-[clamp(40px,7vw,104px)] py-section">
-          <div className="relative aspect-[3/4] overflow-hidden rounded-xs bg-line-2 max-lg:order-2">
+          <div data-animate="image" className="relative aspect-[3/4] overflow-hidden rounded-xs bg-line-2 max-lg:order-2">
             <Image src={IMG.portraitSeated} alt="Coach Happy" fill sizes="(max-width: 880px) 100vw, 50vw" className="object-cover object-top" />
           </div>
           <div className="flex flex-col gap-7 max-lg:items-center">
@@ -87,7 +88,7 @@ export default function HomePage() {
         </div>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,360px),1fr))] gap-px border-y border-ink/14 bg-ink/14">
           {TESTIMONIALS.map((t, i) => (
-            <figure key={t.name} className={cn("m-0 flex flex-col gap-5 bg-cream py-9", i === 0 ? "pr-0 lg:pr-9" : "px-9")}>
+            <figure key={t.name} data-animate="card" className={cn("m-0 flex flex-col gap-5 bg-cream py-9", i === 0 ? "pr-0 lg:pr-9" : "px-9")}>
               <Stars />
               <blockquote className="m-0 text-[clamp(15.5px,1.25vw,17px)] leading-[1.75] text-body">“{t.quote}”</blockquote>
               <figcaption className="text-sm">
@@ -117,13 +118,13 @@ export default function HomePage() {
             </div>
           </div>
           <div className="grid aspect-[5/4] grid-cols-[1.3fr_1fr] grid-rows-2 gap-3">
-            <div className="relative row-span-2 overflow-hidden rounded-xs">
+            <div data-animate="image" className="relative row-span-2 overflow-hidden rounded-xs">
               <Image src={IMG.mcLeading} alt="Happy leading a masterclass" fill sizes="(max-width: 880px) 60vw, 30vw" className="object-cover" />
             </div>
-            <div className="relative overflow-hidden rounded-xs">
+            <div data-animate="image" className="relative overflow-hidden rounded-xs">
               <Image src={IMG.mcCertificate} alt="Certificate presentation" fill sizes="(max-width: 880px) 40vw, 20vw" className="object-cover" />
             </div>
-            <div className="relative overflow-hidden rounded-xs">
+            <div data-animate="image" className="relative overflow-hidden rounded-xs">
               <Image src={IMG.mcInSession} alt="Attendees in session" fill sizes="(max-width: 880px) 40vw, 20vw" className="object-cover" />
             </div>
           </div>

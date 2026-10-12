@@ -273,6 +273,26 @@
   .hero-ctas > a { flex: none; padding-inline: 30px; }
 }
 
+/*
+ * Tablet portrait (880px+; narrower screens already centre): every page's hero block centres like the
+ * home hero, the Pricing intro stacks its currency toggle underneath, and two-column heroes stack.
+ */
+@media (orientation: portrait) and (min-width: 880px) {
+  main :has(> h1):not(.hero-content) { text-align: center; align-items: center; }
+  main :has(> h1) > [role="group"] { justify-content: center; }
+  main section:has(> [role="radiogroup"]) { flex-direction: column; align-items: center; }
+  /* Two-column heroes (About, Contact) stack as on phones so the copy sits in the middle of the page. */
+  main section.grid:has(> div > h1) { grid-template-columns: minmax(0, 1fr); }
+  main section.grid:has(> div > h1) > [data-animate="image"] {
+    order: 2;
+    position: relative;
+    top: auto;
+    width: 100%;
+    max-width: 640px;
+    justify-self: center;
+  }
+}
+
 /* ───────────────────────── Mobile bottom dock ───────────────────────── */
 
 /*
@@ -336,13 +356,21 @@
 
 /*
  * Page load: the intro block (eyebrow → headline → intro copy → hero buttons) rises in, staggered; the
- * headline's italic accent words ink in a beat later. Below the fold, <TextReveal> marks text
- * data-reveal="pending" and flips it to "in" as it scrolls into view. All of it is skipped for
+ * headline's italic accent words ink in a beat later. Below the fold, <ScrollReveal> marks text, cards
+ * and image frames (data-animate) data-reveal="pending" and flips them to "in" as they scroll into view. All of it is skipped for
  * prefers-reduced-motion.
  */
 @keyframes text-rise {
   from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: none; }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes settle {
+  from { transform: scale(1.08); }
+  to { transform: none; }
 }
 @keyframes ink-in {
   from { opacity: 0; filter: blur(8px); }
@@ -364,4 +392,32 @@
     opacity: 0;
     transform: translateY(16px);
   }
+
+  /* Cards rise as one piece; keep their hover colour transitions alongside the reveal. */
+  [data-animate="card"][data-reveal] {
+    transition:
+      opacity 0.9s ease-out,
+      transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1),
+      background-color 0.3s,
+      border-color 0.3s,
+      color 0.3s;
+  }
+  [data-animate="card"][data-reveal="pending"] { transform: translateY(28px); }
+
+  /* Image frames fade in while the photo settles from a slight zoom (cards with photos do the same). */
+  [data-animate="image"][data-reveal] { transition: opacity 1s ease-out; }
+  [data-animate="image"][data-reveal="pending"] { transform: none; }
+  [data-animate][data-reveal] img { transition: transform 1.4s cubic-bezier(0.2, 0.7, 0.2, 1); }
+  [data-animate][data-reveal="pending"] img { transform: scale(1.08); }
+
+  /*
+   * Cards and images already on screen at load (ScrollReveal leaves those alone) get the same entrance
+   * as a CSS animation, so it starts with the first paint — no flash. Siblings stagger.
+   */
+  [data-animate="card"]:not([data-reveal]) { animation: text-rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.25s both; }
+  [data-animate="image"]:not([data-reveal]) { animation: fade-in 1s ease-out 0.2s both; }
+  [data-animate]:not([data-reveal]) img { animation: settle 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s both; }
+  [data-animate]:not([data-reveal]):nth-child(2) { animation-delay: 0.33s; }
+  [data-animate]:not([data-reveal]):nth-child(3) { animation-delay: 0.41s; }
+  [data-animate]:not([data-reveal]):nth-child(n + 4) { animation-delay: 0.49s; }
 }

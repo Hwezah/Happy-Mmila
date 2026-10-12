@@ -32,7 +32,7 @@ export default function EventsPage() {
       <section className="wrap pb-[clamp(56px,7vw,96px)]">
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
           {EVENTS.map((e, i) => (
-            <article key={e.slug} className="flex flex-col overflow-hidden rounded-xs border border-ink/14 bg-paper text-left">
+            <article key={e.slug} data-animate="card" className="flex flex-col overflow-hidden rounded-xs border border-ink/14 bg-paper text-left">
               <div className="relative aspect-[16/10] bg-sand-2">
                 <Image
                   src={e.img}

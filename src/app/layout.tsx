@@ -7,7 +7,7 @@ import { CtaBand } from "@/components/site/cta-band";
 import { SiteFooter } from "@/components/site/footer";
 import { SiteHeader } from "@/components/site/header";
 import { MobileDock } from "@/components/site/mobile-dock";
-import { TextReveal } from "@/components/site/text-reveal";
+import { ScrollReveal } from "@/components/site/scroll-reveal";
 import { AppProviders } from "@/context/app-providers";
 import { IMG } from "@/lib/images";
 import "./globals.css";
@@ -66,7 +66,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <SiteFooter />
           </div>
           <MobileDock />
-          <TextReveal />
+          <ScrollReveal />
           <CheckoutModal />
         </AppProviders>
       </body>

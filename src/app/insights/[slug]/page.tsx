@@ -42,7 +42,7 @@ export default async function ArticlePage({ params }: PageProps<"/insights/[slug
         <h1 className="m-0 font-display text-[clamp(30px,5.4vw,64px)] leading-[1.02] tracking-[-.02em]">{article.title}</h1>
         <span className="text-sm text-muted">By Happy Mmila · {article.meta}</span>
       </div>
-      <div className="relative aspect-video overflow-hidden rounded-xs bg-sand-2">
+      <div data-animate="image" className="relative aspect-video overflow-hidden rounded-xs bg-sand-2">
         <Image src={article.img} alt="" fill
           sizes="(max-width: 820px) 100vw, 820px"
           preload

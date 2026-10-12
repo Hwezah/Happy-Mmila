@@ -21,7 +21,7 @@ export function ContactForm() {
   const text = `Hello Coach Happy, my name is ${name || "…"}.\nInterested in: ${interest}\n${msg}\n${email ? `Email: ${email}` : ""} ${phone ? `Phone: ${phone}` : ""}`.trim();
 
   return (
-    <div className="flex flex-col gap-[22px] self-start rounded-xs border border-ink/14 bg-paper p-[clamp(28px,4vw,48px)] text-left">
+    <div data-animate="card" className="flex flex-col gap-[22px] self-start rounded-xs border border-ink/14 bg-paper p-[clamp(28px,4vw,48px)] text-left">
       <h2 className="m-0 font-display text-[clamp(25px,3.2vw,32px)]">Send a message</h2>
       <LineField label="Your name" value={name} onChange={setName} autoComplete="name" />
       <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-[22px]">

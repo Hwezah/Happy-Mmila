@@ -60,6 +60,7 @@ function FeaturedTalk() {
         href={FEATURED_TALK.href}
         target="_blank"
         rel="noopener noreferrer"
+        data-animate="card"
         className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,420px),1fr))] overflow-hidden rounded-xs bg-ink text-left text-cream hover:text-cream"
       >
         <div className="relative aspect-[16/11] bg-[#43302A]">
@@ -128,13 +129,13 @@ function PostCard({ post }: { post: Post }) {
 
   if (post.external) {
     return (
-      <a href={post.href} target="_blank" rel="noopener noreferrer" className={className}>
+      <a href={post.href} target="_blank" rel="noopener noreferrer" data-animate="card" className={className}>
         {body}
       </a>
     );
   }
   return (
-    <Link href={post.href} className={className} onClick={post.buy ? () => openCheckout(MASTERCLASS_EVENT) : undefined}>
+    <Link href={post.href} data-animate="card" className={className} onClick={post.buy ? () => openCheckout(MASTERCLASS_EVENT) : undefined}>
       {body}
     </Link>
   );

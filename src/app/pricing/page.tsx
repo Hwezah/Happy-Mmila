@@ -36,6 +36,7 @@ function PackageCard({ pkg }: { pkg: Package }) {
   const dark = !!pkg.featured;
   return (
     <div
+      data-animate="card"
       className={cn(
         "relative flex flex-col gap-6 rounded-xs px-[clamp(24px,6vw,34px)] py-[clamp(32px,7vw,40px)] text-left",
         dark ? "bg-ink text-cream" : "border border-ink/14 bg-paper",
@@ -116,7 +117,7 @@ export default function PricingPage() {
       <section className="wrap pt-[72px] pb-6">
         <SectionHead title="Property management" note="Hands-off income, professionally run" className="mb-6" />
         <div className="grid grid-cols-1 gap-5 2xl:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
-          <div className="grid min-w-0 grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-8 rounded-xs bg-sand px-9 py-10 text-left">
+          <div data-animate="card" className="grid min-w-0 grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-8 rounded-xs bg-sand px-9 py-10 text-left">
             <div className="flex flex-col gap-[18px]">
               <h3 className="m-0 font-display text-[clamp(27px,3.4vw,34px)]">{MANAGEMENT.name}</h3>
               <div className="flex flex-wrap items-baseline gap-2.5">
@@ -143,7 +144,7 @@ export default function PricingPage() {
               ))}
             </div>
           </div>
-          <div className="flex flex-col gap-[18px] rounded-xs border border-ink/14 px-[clamp(24px,6vw,34px)] py-[clamp(32px,7vw,40px)] text-left">
+          <div data-animate="card" className="flex flex-col gap-[18px] rounded-xs border border-ink/14 px-[clamp(24px,6vw,34px)] py-[clamp(32px,7vw,40px)] text-left">
             <h3 className="m-0 font-display text-[clamp(23px,2.8vw,28px)]">Portfolio</h3>
             <span className="font-display text-[40px] leading-none">Custom</span>
             <p className="m-0 flex-1 text-[15px] leading-relaxed text-body">

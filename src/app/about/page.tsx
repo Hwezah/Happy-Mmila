@@ -14,7 +14,7 @@ export default function AboutPage() {
   return (
     <>
       <section className="wrap grid grid-cols-[repeat(auto-fit,minmax(min(100%,420px),1fr))] items-start gap-[clamp(40px,7vw,104px)] py-[clamp(48px,7vw,96px)]">
-        <div className="relative aspect-[3/4] overflow-hidden rounded-xs bg-sand-2 max-lg:order-2 lg:sticky lg:top-[110px]">
+        <div data-animate="image" className="relative aspect-[3/4] overflow-hidden rounded-xs bg-sand-2 max-lg:order-2 lg:sticky lg:top-[110px]">
           <Image src={IMG.portraitAbout} alt="Happy Mmila" fill sizes="(max-width: 880px) 100vw, 50vw" className="object-cover" preload />
         </div>
         <div className="flex flex-col gap-7 pt-3">
