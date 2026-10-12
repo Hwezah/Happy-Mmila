@@ -254,6 +254,21 @@
   .hero-content { padding-bottom: calc(max(214px, 22svh) + env(safe-area-inset-bottom)); }
 }
 
+/*
+ * Phone landscape (touch, under 960px wide): the desktop structure — copy left, photo right — and the
+ * hero grows with its content instead of being sized to the short screen. Tablets in landscape are
+ * 960px+ and keep the rules above.
+ */
+@media (orientation: landscape) and (pointer: coarse) and (max-width: 959.98px) {
+  .hero { min-height: 0; }
+  .hero-wide { display: block; }
+  .hero-narrow { display: none; }
+  .hero-content { text-align: left; align-items: flex-start; padding-bottom: 72px; }
+  .hero-content h1 { max-width: min(960px, 58%); }
+  .hero-ctas { justify-content: flex-start; }
+  .hero-ctas > a { flex: none; padding-inline: 30px; }
+}
+
 /* ───────────────────────── Mobile bottom dock ───────────────────────── */
 
 /*
