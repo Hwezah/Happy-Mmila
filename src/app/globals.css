@@ -77,6 +77,10 @@
 @custom-variant short (@media (max-height: 1000px));
 
 @layer base {
+  :root {
+    /* Page content column. Kept narrower than the header row (max 1560px, 3vw gutters vs 4vw here). */
+    --content-max: 1360px;
+  }
   html,
   body {
     margin: 0;
@@ -114,9 +118,9 @@
   }
 }
 
-/* Page container: content max 1180px with the site gutter. */
+/* Page container: content max --content-max with the site gutter. */
 @utility wrap {
-  max-width: 1180px;
+  max-width: var(--content-max);
   margin-inline: auto;
   padding-inline: clamp(14px, 4vw, 46px);
 }
@@ -181,7 +185,7 @@
 .hero-img-wide {
   position: absolute;
   top: calc(var(--hh, 82px) + clamp(8px, 2vh, 24px));
-  right: max(-6vw, calc((100% - 1180px) / 2 - 10vw));
+  right: max(-6vw, calc((100% - var(--content-max)) / 2 - 10vw));
   height: calc(124% - var(--hh, 82px));
   width: auto;
   max-width: 76%;
@@ -217,7 +221,7 @@
 .hero-content {
   position: relative;
   width: 100%;
-  max-width: 1180px;
+  max-width: var(--content-max);
   margin: 0 auto;
   /* Top padding keeps the copy clear of the glass header on short screens (touch landscape). */
   padding: calc(var(--hh, 82px) + 24px) clamp(14px, 4vw, 46px) clamp(72px, 9vw, 112px);
