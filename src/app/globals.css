@@ -58,6 +58,8 @@
 @custom-variant pp (@media (max-width: 759.98px) and (orientation: portrait), (max-width: 759.98px) and (not (pointer: coarse)));
 @custom-variant tl (@media (orientation: landscape) and (pointer: coarse));
 @custom-variant port (@media (orientation: portrait));
+/* Short screens (most phones): the drawer menu tightens so it fits between its header and button. */
+@custom-variant short (@media (max-height: 1000px));
 
 @layer base {
   html,

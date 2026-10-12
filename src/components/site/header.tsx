@@ -96,8 +96,8 @@ function Wordmark() {
   );
 }
 
-const contactRow = "flex items-center gap-3.5 border-b border-cream/12 py-3.5 text-cream hover:text-copper";
-const contactIcon = "flex size-9 flex-none items-center justify-center rounded-full bg-cream/8 text-copper";
+const contactRow = "flex items-center gap-3.5 border-b border-cream/12 py-3.5 text-cream short:py-2 hover:text-copper";
+const contactIcon = "flex size-9 flex-none items-center justify-center rounded-full bg-cream/8 text-copper short:size-8";
 const contactLabel = "text-[11px] font-semibold tracking-[.16em] text-faint uppercase";
 
 /**
@@ -118,7 +118,7 @@ function Drawer({ open, onOpenChange, pathname }: { open: boolean; onOpenChange:
             onClick={close}
             aria-current={on ? "page" : undefined}
             className={cn(
-              "flex items-baseline justify-between border-b border-cream/14 py-3.5 font-display text-[clamp(26px,6vw,32px)] leading-[1.15]",
+              "flex items-baseline justify-between border-b border-cream/14 py-3.5 font-display text-[clamp(26px,6vw,32px)] leading-[1.15] short:py-1.5 short:text-[clamp(22px,5.6vw,28px)]",
               on ? "text-copper hover:text-copper" : "text-cream hover:text-copper",
             )}
           >
@@ -143,12 +143,12 @@ function Drawer({ open, onOpenChange, pathname }: { open: boolean; onOpenChange:
         <Dialog.Overlay className="fixed inset-0 z-50 bg-ink/50 backdrop-blur-[3px] data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0" />
         <Dialog.Content
           aria-describedby={undefined}
-          className="fixed inset-y-0 right-0 z-50 flex h-full w-[min(440px,90vw)] flex-col gap-7 overflow-y-auto bg-ink px-[clamp(20px,4vw,36px)] pt-4 pb-[calc(28px+env(safe-area-inset-bottom))] text-left text-cream shadow-[-20px_0_60px_rgba(0,0,0,.3)] outline-none data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:animate-in data-[state=open]:slide-in-from-right motion-reduce:animate-none"
+          className="fixed inset-y-0 right-0 z-50 flex h-full w-[min(440px,90vw)] flex-col gap-7 overflow-hidden short:gap-5 bg-ink px-[clamp(20px,4vw,36px)] pt-4 pb-[calc(28px+env(safe-area-inset-bottom))] text-left text-cream shadow-[-20px_0_60px_rgba(0,0,0,.3)] outline-none data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:animate-in data-[state=open]:slide-in-from-right motion-reduce:animate-none"
         >
           <VisuallyHidden.Root>
             <Dialog.Title>Menu</Dialog.Title>
           </VisuallyHidden.Root>
-          <div className="flex items-center justify-between">
+          <div className="flex flex-none items-center justify-between">
             <span className="font-display text-[22px]">
               Happy <em>Mmila</em>
             </span>
@@ -157,52 +157,57 @@ function Drawer({ open, onOpenChange, pathname }: { open: boolean; onOpenChange:
             </Dialog.Close>
           </div>
 
-          {navList(NAV, "flex xl:hidden")}
-          {navList(DRAWER_DESKTOP_NAV, "hidden xl:flex")}
+          {/* Header and button stay put; the middle scrolls on its own and is centred between them whenever it fits. */}
+          <div className="-mx-1 flex min-h-0 flex-1 flex-col overflow-y-auto px-1">
+            <div className="my-auto flex flex-col gap-7 short:gap-5">
+              {navList(NAV, "flex xl:hidden")}
+              {navList(DRAWER_DESKTOP_NAV, "hidden xl:flex")}
 
-          <div className="flex flex-col">
-            <span className="pb-1.5 text-[11px] font-semibold tracking-[.16em] text-copper uppercase">Get in touch</span>
-            <a href={waLink()} target="_blank" rel="noopener noreferrer" className={contactRow}>
-              <span className={contactIcon}>
-                <WhatsAppIcon />
-              </span>
-              <span className="flex min-w-0 flex-col gap-0.5">
-                <span className={contactLabel}>WhatsApp</span>
-                <span className="text-[15px] whitespace-nowrap">{PHONE_DISPLAY}</span>
-              </span>
-            </a>
-            <a href={PHONE_TEL} className={contactRow}>
-              <span className={contactIcon}>
-                <PhoneIcon />
-              </span>
-              <span className="flex min-w-0 flex-col gap-0.5">
-                <span className={contactLabel}>Call</span>
-                <span className="text-[15px] whitespace-nowrap">{PHONE_DISPLAY}</span>
-              </span>
-            </a>
-            <a href={`mailto:${EMAIL}`} className={contactRow}>
-              <span className={contactIcon}>
-                <MailIcon />
-              </span>
-              <span className="flex min-w-0 flex-col gap-0.5">
-                <span className={contactLabel}>Email</span>
-                <span className="text-[15px] whitespace-nowrap">{EMAIL}</span>
-              </span>
-            </a>
-            <div className="flex items-center gap-3.5 py-3.5">
-              <span className={contactIcon}>
-                <PinIcon />
-              </span>
-              <span className="flex flex-col gap-0.5">
-                <span className={contactLabel}>Based in</span>
-                <span className="text-[15px]">Kampala · Remote worldwide</span>
-              </span>
+              <div className="flex flex-col">
+                <span className="pb-1.5 text-[11px] font-semibold tracking-[.16em] text-copper uppercase">Get in touch</span>
+                <a href={waLink()} target="_blank" rel="noopener noreferrer" className={contactRow}>
+                  <span className={contactIcon}>
+                    <WhatsAppIcon />
+                  </span>
+                  <span className="flex min-w-0 flex-col gap-0.5">
+                    <span className={contactLabel}>WhatsApp</span>
+                    <span className="text-[15px] whitespace-nowrap">{PHONE_DISPLAY}</span>
+                  </span>
+                </a>
+                <a href={PHONE_TEL} className={contactRow}>
+                  <span className={contactIcon}>
+                    <PhoneIcon />
+                  </span>
+                  <span className="flex min-w-0 flex-col gap-0.5">
+                    <span className={contactLabel}>Call</span>
+                    <span className="text-[15px] whitespace-nowrap">{PHONE_DISPLAY}</span>
+                  </span>
+                </a>
+                <a href={`mailto:${EMAIL}`} className={contactRow}>
+                  <span className={contactIcon}>
+                    <MailIcon />
+                  </span>
+                  <span className="flex min-w-0 flex-col gap-0.5">
+                    <span className={contactLabel}>Email</span>
+                    <span className="text-[15px] whitespace-nowrap">{EMAIL}</span>
+                  </span>
+                </a>
+                <div className="flex items-center gap-3.5 py-3.5 short:py-2">
+                  <span className={contactIcon}>
+                    <PinIcon />
+                  </span>
+                  <span className="flex flex-col gap-0.5">
+                    <span className={contactLabel}>Based in</span>
+                    <span className="text-[15px]">Kampala · Remote worldwide</span>
+                  </span>
+                </div>
+              </div>
+
+              <SocialLinks />
             </div>
           </div>
 
-          <SocialLinks />
-
-          <Link href="/contact" onClick={close} className={cn(buttonVariants({ variant: "light", layout: "block" }), "mt-auto py-[18px]")}>
+          <Link href="/contact" onClick={close} className={cn(buttonVariants({ variant: "light", layout: "block" }), "flex-none py-[18px]")}>
             Book a consultation
           </Link>
         </Dialog.Content>
