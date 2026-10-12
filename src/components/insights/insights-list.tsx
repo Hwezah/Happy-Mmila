@@ -62,7 +62,7 @@ function FeaturedTalk() {
         className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,420px),1fr))] overflow-hidden rounded-xs bg-ink text-left text-cream hover:text-cream"
       >
         <div className="relative aspect-[16/11] bg-[#43302A]">
-          <Image src={FEATURED_TALK.img} alt="Happy speaking on the TEDx stage" fill sizes="(max-width: 880px) 100vw, 590px" className="object-cover" />
+          <Image src={FEATURED_TALK.img} alt="Happy speaking on the TEDx stage" fill sizes="(max-width: 880px) 100vw, 590px" className={cn("object-cover", FEATURED_TALK.imgFocus === "top" && "object-top")} />
           <span className="absolute bottom-5 left-5 flex size-16 items-center justify-center rounded-full bg-cream text-ink">
             <PlayIcon />
           </span>
@@ -90,7 +90,13 @@ function PostCard({ post }: { post: Post }) {
   const body = (
     <>
       <div className="relative aspect-[16/10] bg-sand-2">
-        <Image src={post.img} alt="" fill sizes="(max-width: 560px) 100vw, (max-width: 960px) 50vw, 380px" className="object-cover" />
+        <Image
+          src={post.img}
+          alt=""
+          fill
+          sizes="(max-width: 560px) 100vw, (max-width: 960px) 50vw, 380px"
+          className={cn("object-cover", post.imgFocus === "top" && "object-top")}
+        />
         {post.video && (
           <span className="absolute bottom-4 left-4 flex size-12 items-center justify-center rounded-full bg-cream text-ink">
             <PlayIcon width={16} height={16} />

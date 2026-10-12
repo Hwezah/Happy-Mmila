@@ -42,7 +42,11 @@ export default async function ArticlePage({ params }: PageProps<"/insights/[slug
         <span className="text-sm text-muted">By Happy Mmila · {article.meta}</span>
       </div>
       <div className="relative aspect-video overflow-hidden rounded-xs bg-sand-2">
-        <Image src={article.img} alt="" fill sizes="(max-width: 820px) 100vw, 820px" preload className="object-cover" />
+        <Image src={article.img} alt="" fill
+          sizes="(max-width: 820px) 100vw, 820px"
+          preload
+          className={cn("object-cover", article.imgFocus === "top" && "object-top")}
+        />
       </div>
       <p className="m-0 font-display text-[clamp(20px,2vw,24px)] leading-normal">{article.lead}</p>
       {article.sections.map((s) => (

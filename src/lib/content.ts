@@ -354,12 +354,16 @@ export const EVENTS: EventItem[] = [
 /** Index of the next masterclass in EVENTS — the announcement bar and "Get tickets" CTAs open this one. */
 export const MASTERCLASS_EVENT = 0;
 
+/** Where a cropped photo anchors; "top" keeps heads in frame on portraits. Defaults to centre. */
+export type ImageFocus = "top" | "center";
+
 export type Article = {
   slug: string;
   kind: string;
   title: string;
   meta: string;
   img: string;
+  imgFocus?: ImageFocus;
   blurb: string;
   lead: string;
   sections: { h: string; p: string }[];
@@ -403,6 +407,7 @@ export const ARTICLES: Article[] = [
     title: "Pricing a Kampala Airbnb through the year",
     meta: "6 min read",
     img: IMG.portraitSeated,
+    imgFocus: "top",
     blurb: "Weekends, events and the festive season — how to stop leaving money on the table.",
     lead: "Pricing is the lever most hosts set once and forget. In a city with strong seasonal swings, that habit is expensive.",
     sections: [
@@ -430,6 +435,7 @@ export const ARTICLES: Article[] = [
     title: "From one unit to nine: what I'd do differently",
     meta: "4 min read",
     img: IMG.portraitHero,
+    imgFocus: "top",
     blurb: "Lessons from scaling a hosting business — the wins, and the mistakes worth avoiding.",
     lead: "I started with one underfunded unit and a lot of conviction. Growing to nine taught me more than any course could.",
     sections: [
@@ -461,6 +467,7 @@ export type Post = {
   blurb: string;
   meta: string;
   img: string;
+  imgFocus?: ImageFocus;
   href: string;
   external: boolean;
   cta: string;
@@ -477,6 +484,7 @@ export const POSTS: Post[] = [
     blurb: a.blurb,
     meta: a.meta,
     img: a.img,
+    imgFocus: a.imgFocus,
     href: `/insights/${a.slug}`,
     external: false,
     cta: "Read article",
@@ -513,6 +521,7 @@ export const POSTS: Post[] = [
     blurb: "From 0 to 9 units in Kololo — growth decisions, income strategy and hosting mistakes to avoid.",
     meta: "CEO Insights Uganda · Aug 2025",
     img: IMG.ceoInsights,
+    imgFocus: "top",
     href: "https://www.youtube.com/watch?v=wj2OMIXuREg",
     external: true,
     cta: "Watch",
@@ -556,6 +565,7 @@ export const POST_FILTERS: { key: "all" | PostCategory; label: string }[] = [
 export const FEATURED_TALK = {
   href: "https://www.youtube.com/watch?v=JGK5WWwY_UA",
   img: IMG.tedx,
+  imgFocus: "top" as ImageFocus,
   meta: "Featured · TEDx Makerere University Business School · Feb 2026",
   blurb:
     "Happy reflects on growing from one underfunded Airbnb unit to nine properties — and how discernment, strategy and conviction turn temporary discomfort into long-term ownership.",
