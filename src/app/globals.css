@@ -85,13 +85,11 @@
   body {
     margin: 0;
     overflow-x: clip;
+    background: var(--color-cream);
     color: var(--color-ink);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
-  /* Cream lives on html; body stays transparent so the ambient glow layer (body::before) shows through. */
-  html { background: var(--color-cream); }
-  body { background: transparent; }
   a {
     color: var(--color-rust);
     text-decoration: none;
@@ -353,40 +351,6 @@
 @media (prefers-reduced-motion: reduce) {
   .marquee-track { animation: none; }
 }
-
-/* ───────────────────────── Ambient colour ───────────────────────── */
-
-/*
- * One warm wash of light from the top-right corner (copper → rose → honey → cream) on a fixed layer
- * behind the whole page. It shows through every light area, breathes slowly, and sand sections let it
- * tint through. Cards, dark sections and the footer stay solid, so text contrast is unchanged.
- */
-body::before {
-  content: "";
-  position: fixed;
-  inset: -15%;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    radial-gradient(
-      130% 110% at 100% 0%,
-      rgba(206, 112, 64, 0.78) 0%,
-      rgba(214, 112, 96, 0.5) 22%,
-      rgba(236, 176, 110, 0.32) 44%,
-      rgba(246, 241, 234, 0) 72%
-    ),
-    var(--color-cream);
-  animation: glow-drift 30s ease-in-out infinite alternate;
-}
-@keyframes glow-drift {
-  from { transform: translate3d(0, 0, 0) scale(1); }
-  to { transform: translate3d(-2%, 2%, 0) scale(1.04); }
-}
-@media (prefers-reduced-motion: reduce) {
-  body::before { animation: none; }
-}
-/* Sand sections tint with the glow instead of blocking it. */
-main section.bg-sand { background-color: rgba(239, 232, 221, 0.55); }
 
 /* ───────────────────────── Text motion ───────────────────────── */
 
