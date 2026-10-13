@@ -117,14 +117,14 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
-          <div className="grid aspect-[5/4] grid-cols-[1.3fr_1fr] grid-rows-2 gap-3">
-            <div data-animate="image" className="relative row-span-2 overflow-hidden rounded-xs">
+          <div className="grid aspect-[5/4] grid-cols-[1.3fr_1fr] grid-rows-2 overflow-hidden rounded-xs">
+            <div data-animate="image" className="relative row-span-2 overflow-hidden">
               <Image src={IMG.mcLeading} alt="Happy leading a masterclass" fill sizes="(max-width: 880px) 60vw, 30vw" className="object-cover" />
             </div>
-            <div data-animate="image" className="relative overflow-hidden rounded-xs">
+            <div data-animate="image" className="relative overflow-hidden">
               <Image src={IMG.mcCertificate} alt="Certificate presentation" fill sizes="(max-width: 880px) 40vw, 20vw" className="object-cover" />
             </div>
-            <div data-animate="image" className="relative overflow-hidden rounded-xs">
+            <div data-animate="image" className="relative overflow-hidden">
               <Image src={IMG.mcInSession} alt="Attendees in session" fill sizes="(max-width: 880px) 40vw, 20vw" className="object-cover" />
             </div>
           </div>

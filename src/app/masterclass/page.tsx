@@ -68,9 +68,9 @@ export default function MasterclassPage() {
       </section>
 
       <section className="wrap pb-[clamp(56px,7vw,96px)]">
-        <div className="grid grid-flow-dense auto-rows-[clamp(110px,18vw,240px)] grid-cols-4 gap-3">
+        <div className="grid grid-flow-dense auto-rows-[clamp(110px,18vw,240px)] grid-cols-4 overflow-hidden rounded-xs">
           {MASTERCLASS_MOSAIC.map((m) => (
-            <div key={m.src} data-animate="image" className={cn("relative overflow-hidden rounded-xs", m.span)}>
+            <div key={m.src} data-animate="image" className={cn("relative overflow-hidden", m.span)}>
               <Image src={m.src} alt={m.alt} fill sizes="(max-width: 880px) 50vw, 600px" className="object-cover" />
             </div>
           ))}
