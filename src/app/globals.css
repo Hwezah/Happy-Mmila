@@ -85,11 +85,13 @@
   body {
     margin: 0;
     overflow-x: clip;
-    background: var(--color-cream);
     color: var(--color-ink);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
+  /* Cream lives on html; body stays transparent so the ambient glow layer (body::before) shows through. */
+  html { background: var(--color-cream); }
+  body { background: transparent; }
   a {
     color: var(--color-rust);
     text-decoration: none;
@@ -351,6 +353,38 @@
 @media (prefers-reduced-motion: reduce) {
   .marquee-track { animation: none; }
 }
+
+/* ───────────────────────── Ambient colour ───────────────────────── */
+
+/*
+ * Warm, saturated glows (copper, rust, rose, honey) on a fixed layer behind the whole page. They show
+ * through every light area, slowly drift, and sand sections let them tint through. Cards, dark
+ * sections and the footer stay solid, so text contrast is unchanged.
+ */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -15%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(38% 42% at 88% 8%, rgba(226, 150, 96, 0.82) 0%, rgba(226, 150, 96, 0) 64%),
+    radial-gradient(34% 40% at 6% 34%, rgba(170, 72, 36, 0.52) 0%, rgba(170, 72, 36, 0) 64%),
+    radial-gradient(40% 38% at 74% 70%, rgba(214, 96, 84, 0.56) 0%, rgba(214, 96, 84, 0) 64%),
+    radial-gradient(36% 34% at 18% 92%, rgba(240, 180, 84, 0.68) 0%, rgba(240, 180, 84, 0) 64%),
+    var(--color-cream);
+  animation: glow-drift 40s ease-in-out infinite alternate;
+}
+@keyframes glow-drift {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-3%, 2%, 0) scale(1.05); }
+  to { transform: translate3d(2%, -2%, 0) scale(1.02); }
+}
+@media (prefers-reduced-motion: reduce) {
+  body::before { animation: none; }
+}
+/* Sand sections tint with the glow instead of blocking it. */
+main section.bg-sand { background-color: rgba(239, 232, 221, 0.55); }
 
 /* ───────────────────────── Text motion ───────────────────────── */
 
