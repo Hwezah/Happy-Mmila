@@ -274,17 +274,23 @@ export const MASTERCLASS_PILLARS = [
   { name: "Connect", body: "Network with operators, suppliers and partners in the room." },
 ];
 
-/** Masterclass photo mosaic; span classes place each tile in the 4-column grid. */
+/**
+ * Masterclass photo mosaic: nine photos placed explicitly on a 4 × 4 grid so they fill a clean box.
+ *   Leading Leading Particip. Certif.
+ *   Leading Leading Listening Certif.
+ *   Panel   Panel   RoundTbl  Laptop
+ *   Group   Group   Network   Laptop
+ */
 export const MASTERCLASS_MOSAIC = [
-  { src: IMG.mcLeading, alt: "Happy leading a session", span: "col-span-2 row-span-2" },
-  { src: IMG.mcWithParticipants, alt: "Happy with participants", span: "" },
-  { src: IMG.mcListening, alt: "Attendees listening", span: "" },
-  { src: IMG.mcCertificate, alt: "Certificate presentation", span: "row-span-2" },
-  { src: IMG.mcRoundTable, alt: "Round table discussions", span: "" },
-  { src: IMG.mcPanel, alt: "Panel talk on stage", span: "col-span-2" },
-  { src: IMG.mcNetworking, alt: "Networking", span: "" },
-  { src: IMG.mcLaptop, alt: "Participant on laptop", span: "" },
-  { src: IMG.mcGroup, alt: "Final cohort group photo", span: "col-span-2" },
+  { src: IMG.mcLeading, alt: "Happy leading a session", span: "col-start-1 row-start-1 col-span-2 row-span-2" },
+  { src: IMG.mcWithParticipants, alt: "Happy with participants", span: "col-start-3 row-start-1" },
+  { src: IMG.mcCertificate, alt: "Certificate presentation", span: "col-start-4 row-start-1 row-span-2" },
+  { src: IMG.mcListening, alt: "Attendees listening", span: "col-start-3 row-start-2" },
+  { src: IMG.mcPanel, alt: "Panel talk on stage", span: "col-start-1 row-start-3 col-span-2" },
+  { src: IMG.mcRoundTable, alt: "Round table discussions", span: "col-start-3 row-start-3" },
+  { src: IMG.mcLaptop, alt: "Participant on laptop", span: "col-start-4 row-start-3 row-span-2" },
+  { src: IMG.mcGroup, alt: "Final cohort group photo", span: "col-start-1 row-start-4 col-span-2" },
+  { src: IMG.mcNetworking, alt: "Networking", span: "col-start-3 row-start-4" },
 ];
 
 export type Tier = { name: string; desc: string; usd: number };
